@@ -1,1 +1,154 @@
-<!doctype html><meta charset=utf-8><title>deliveries</title><p>Coming soon</p>
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b1020">
+<meta name="robots" content="noindex">
+<title>המשלוחים שלי</title>
+<style>
+:root{--bg:#0b1020;--txt:#f4f6ff;--mut:#a9b0cc;--glass:rgba(255,255,255,.08);--line:rgba(255,255,255,.16);
+--c-blue:#5ac8fa;--c-green:#34d399;--c-amber:#fbbf24;--c-pink:#f472b6;--c-violet:#a78bfa;--c-red:#fb7185;--c-gray:#94a3b8}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{background:var(--bg)}
+body{margin:0;min-height:100vh;color:var(--txt);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans Hebrew",Arial,sans-serif;
+background:radial-gradient(60vmax 60vmax at 90% -10%,#6d28d9aa,transparent 60%),radial-gradient(50vmax 50vmax at -10% 20%,#0ea5e9aa,transparent 60%),radial-gradient(50vmax 50vmax at 70% 110%,#ec4899aa,transparent 60%),var(--bg);
+background-attachment:fixed;
+padding:calc(env(safe-area-inset-top) + 16px) calc(env(safe-area-inset-right) + 14px) calc(env(safe-area-inset-bottom) + 32px) calc(env(safe-area-inset-left) + 14px);line-height:1.45}
+main{max-width:640px;margin:0 auto}
+header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin:6px 2px 14px}
+h1{font-size:28px;margin:0;letter-spacing:-.5px}
+.sub{color:var(--mut);font-size:13px;margin-top:4px;overflow-wrap:anywhere}
+.btn{appearance:none;border:1px solid var(--line);background:var(--glass);color:var(--txt);border-radius:14px;padding:10px 14px;font:inherit;font-size:14px;font-weight:600;
+backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);min-height:44px;white-space:nowrap;cursor:pointer;transition:transform .12s,background .2s}
+.btn:active{transform:scale(.95)}
+.btn.busy .ic{animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(-360deg)}}
+.sum{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.chip{flex:1 1 90px;background:var(--glass);border:1px solid var(--line);border-radius:18px;padding:10px 12px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.chip b{display:block;font-size:24px;line-height:1.1}
+.chip span{font-size:12px;color:var(--mut)}
+h2{font-size:14px;color:var(--mut);margin:20px 4px 8px;font-weight:600;letter-spacing:.3px}
+.card{position:relative;background:var(--glass);border:1px solid var(--line);border-radius:22px;margin-bottom:10px;overflow:hidden;
+backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);box-shadow:0 8px 30px rgba(0,0,0,.25)}
+.card::before{content:"";position:absolute;inset-block:0;inset-inline-start:0;width:5px;background:var(--ac,var(--c-gray))}
+.hd{width:100%;text-align:start;background:none;border:0;color:inherit;font:inherit;padding:14px 18px 12px 14px;padding-inline-start:20px;cursor:pointer;display:block}
+.row1{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.ttl{font-weight:700;font-size:16px;overflow-wrap:anywhere}
+.mer{font-size:12.5px;color:var(--mut);margin-top:2px}
+.pill{flex:none;font-size:12px;font-weight:700;padding:4px 10px;border-radius:99px;color:#0b1020;background:var(--ac,var(--c-gray));max-width:48%;text-align:center}
+.eta{margin-top:10px;font-size:14px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline}
+.eta .big{font-size:20px;font-weight:800;color:var(--ac)}
+.est{font-size:11px;font-weight:700;color:var(--c-amber);border:1px solid var(--c-amber);border-radius:6px;padding:0 5px}
+.fresh{margin-top:8px;font-size:12px;color:var(--mut);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--c-green);box-shadow:0 0 8px var(--c-green)}
+.dot.old{background:var(--c-amber);box-shadow:0 0 8px var(--c-amber)}
+.chev{display:inline-block;transition:transform .25s;margin-inline-start:auto;color:var(--mut)}
+.card.open .chev{transform:rotate(180deg)}
+.det{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease}
+.card.open .det{grid-template-rows:1fr}
+.det>div{overflow:hidden;min-height:0}
+.dl{padding:2px 20px 16px;display:grid;gap:10px;border-top:1px solid var(--line);margin-top:2px;padding-top:12px}
+.kv{display:grid;grid-template-columns:104px 1fr;gap:8px;font-size:13.5px}
+.kv dt{color:var(--mut)}.kv dd{margin:0;overflow-wrap:anywhere;word-break:break-word}
+a{color:var(--c-blue)}
+.copy{margin-inline-start:8px;font-size:12px;padding:2px 10px;min-height:30px;border-radius:10px}
+.nd{color:var(--mut);font-style:normal}
+.err{background:#fb718533;border:1px solid var(--c-red);border-radius:16px;padding:12px;margin-bottom:12px;font-size:14px}
+.toast{position:fixed;inset-inline:0;bottom:calc(env(safe-area-inset-bottom) + 18px);margin:auto;width:max-content;max-width:90vw;background:#111a;border:1px solid var(--line);
+backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:10px 16px;border-radius:99px;font-size:14px;opacity:0;transform:translateY(12px);transition:.25s;pointer-events:none}
+.toast.show{opacity:1;transform:none}
+.lock{display:none;gap:8px;margin:20px 0}.lock input{flex:1;min-width:0;border-radius:14px;border:1px solid var(--line);background:var(--glass);color:var(--txt);padding:12px;font:inherit;font-size:16px}
+footer{margin-top:22px;color:var(--mut);font-size:12px;text-align:center}
+</style>
+</head>
+<body>
+<main>
+<header>
+ <div><h1>המשלוחים שלי</h1><div class="sub" id="sync">טוען</div></div>
+ <button class="btn" id="rf" type="button"><span class="ic" style="display:inline-block">↻</span> רענון</button>
+</header>
+<div id="err"></div>
+<form class="lock" id="lock"><input type="password" id="pw" placeholder="סיסמה" autocomplete="current-password"><button class="btn" type="submit">כניסה</button></form>
+<div class="sum" id="sum"></div>
+<div id="list"></div>
+<footer>הנתונים מתעדכנים אוטומטית מהאימיילים של חברות המשלוח. ערכים מסומנים "הערכה" אינם מידע חי.</footer>
+</main>
+<div class="toast" id="toast" role="status"></div>
+<script>
+const API="https://deliveries-tracker.mqog1v.workers.dev/api/deliveries";
+const TZ="Asia/Jerusalem";
+const ST={ordered:["הוזמן","--c-violet"],processing:["בהכנה","--c-violet"],shipped:["נשלח","--c-blue"],in_transit:["בדרך","--c-blue"],customs:["במכס","--c-amber"],
+out_for_delivery:["יצא לחלוקה","--c-green"],ready_for_pickup:["מוכן לאיסוף","--c-pink"],delivered:["נמסר","--c-green"],problem:["בעיה","--c-red"],unknown:["לא ידוע","--c-gray"]};
+let DATA=null,open=new Set(JSON.parse(sessionStorage.getItem("open")||"[]"));
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const nd='<em class="nd">אין נתונים כרגע</em>';
+const fmt=(iso,o)=>new Intl.DateTimeFormat("he-IL",{timeZone:TZ,...o}).format(new Date(iso));
+const full=iso=>iso?fmt(iso,{day:"numeric",month:"numeric",year:"numeric",hour:"2-digit",minute:"2-digit"}):"";
+function ago(iso){if(!iso)return null;const m=Math.max(0,Math.round((Date.now()-new Date(iso))/60000));
+ if(m<1)return"ממש עכשיו";if(m<60)return`לפני ${m} דק׳`;const h=Math.floor(m/60);if(h<24)return`לפני ${h} שע׳`;const d=Math.floor(h/24);return d===1?"אתמול":`לפני ${d} ימים`;}
+const ilDate=(d=new Date())=>new Intl.DateTimeFormat("en-CA",{timeZone:TZ}).format(d); // YYYY-MM-DD in Israel
+const toUTC=s=>{const[y,m,d]=s.split("-").map(Number);return new Date(Date.UTC(y,m-1,d))};
+const biz=d=>d.getUTCDay()<=4; // Israel work week Sun-Thu
+function deadline(from,max){const d=toUTC(from);let n=0;while(n<max){d.setUTCDate(d.getUTCDate()+1);if(biz(d))n++;}return d}
+function bizLeft(dl){const t=toUTC(ilDate());let n=0;const d=new Date(t);while(d<dl){d.setUTCDate(d.getUTCDate()+1);if(biz(d))n++;}return n}
+function etaHtml(s){const e=s.eta||{};
+ if(s.status==="delivered")return`<div class="eta"><span class="big">נמסר</span><span>${esc(full(s.statusAt))}</span></div>`;
+ if(e.type==="estimate"&&e.businessDays){const dl=deadline(e.businessDays.from,e.businessDays.max),left=bizLeft(dl),
+  ds=new Intl.DateTimeFormat("he-IL",{timeZone:"UTC",weekday:"long",day:"numeric",month:"numeric"}).format(dl);
+  const big=toUTC(ilDate())>dl?"חלף המועד המשוער":left===0?"היום המועד המשוער האחרון":`${left} ימי עסקים נותרו`;
+  return`<div class="eta"><span class="big">${big}</span><span>עד ${esc(ds)}</span><span class="est">הערכה</span></div>`;}
+ if(e.type==="live"&&e.date){return`<div class="eta"><span class="big">${esc(new Intl.DateTimeFormat("he-IL",{timeZone:"UTC",weekday:"long",day:"numeric",month:"numeric"}).format(toUTC(e.date)))}</span><span>מידע חי מהחברה</span></div>`;}
+ return`<div class="eta">${nd}</div>`;}
+function freshHtml(s){const t=s.lastCheckedAt||s.updatedAt;const old=!t||Date.now()-new Date(t)>36*3600e3;
+ return`<div class="fresh"><i class="dot ${old?"old":""}"></i><span>נבדק: ${esc(t?ago(t)+" · "+full(t):"לא ידוע")}</span></div>`;}
+function detail(s){const r=[];const add=(k,v)=>r.push(`<dl class="kv" style="margin:0"><dt>${k}</dt><dd>${v}</dd></dl>`);
+ add("סטטוס",esc(s.statusText||ST[s.status]?.[0]||"")+(s.statusAt?` <span class="nd">(${esc(full(s.statusAt))})</span>`:""));
+ if(s.statusSource)add("מקור",esc(s.statusSource));
+ if(s.orderRef)add("הזמנה",esc(s.orderRef));
+ if(s.items?.length)add("פריטים",s.items.map(i=>`${esc(i.qty)}× ${esc(i.name)}`).join("<br>"));
+ if(s.total)add("סכום",`${esc(s.total.amount)} ₪${s.total.note?` <span class="nd">(${esc(s.total.note)})</span>`:""}`);
+ if(s.carrier)add("חברת שילוח",esc(s.carrier));
+ const t=s.tracking;
+ add("מספר מעקב",t&&t.number?`<bdi dir="ltr">${esc(t.number)}</bdi><button class="btn copy" data-copy="${esc(t.number)}" type="button">העתק</button>${t.url?` <a href="${esc(t.url)}" target="_blank" rel="noopener">קישור מעקב</a>`:""}`:nd);
+ if(s.pickup){const p=s.pickup;add("איסוף",esc(p.place));if(p.locker)add("ארונית",esc(p.locker));if(p.code)add("קוד איסוף",`<bdi dir="ltr">${esc(p.code)}</bdi>`);if(p.hours)add("שעות",esc(p.hours));if(p.deadline)add("לאסוף תוך",esc(p.deadline));}
+ if(s.destination){add("יעד",esc([s.destination.address,s.destination.city].filter(Boolean).join(", ")));}
+ if(s.eta?.note)add("הערת זמן",esc(s.eta.note));
+ (s.notes||[]).forEach(n=>add("הערה",esc(n)));
+ add("עודכן",esc(full(s.updatedAt)||"לא ידוע"));
+ return`<div class="dl">${r.join("")}</div>`;}
+function card(s){const [lab,col]=ST[s.status]||ST.unknown;const isOpen=open.has(s.id);
+ return`<section class="card ${isOpen?"open":""}" style="--ac:var(${col})" data-id="${esc(s.id)}">
+ <button class="hd" type="button" aria-expanded="${isOpen}"><div class="row1"><div><div class="ttl">${esc(s.title)}</div><div class="mer">${esc(s.merchant||"")}${s.orderRef?" · "+esc(s.orderRef):""}</div></div><span class="pill">${esc(s.statusText||lab)}</span></div>
+ ${etaHtml(s)}${freshHtml(s).replace('class="fresh"','class="fresh"')}<span class="chev" style="display:block;text-align:center">⌄</span></button>
+ <div class="det"><div>${detail(s)}</div></div></section>`;}
+function render(){if(!DATA)return;const all=(DATA.shipments||[]).filter(s=>!s.archived);
+ const act=all.filter(s=>s.status!=="delivered"),done=all.filter(s=>s.status==="delivered");
+ const cnt=k=>act.filter(s=>s.status===k).length;
+ $("#sum").innerHTML=`<div class="chip"><b>${act.length}</b><span>פעילים</span></div><div class="chip"><b>${cnt("ready_for_pickup")+cnt("out_for_delivery")}</b><span>לאיסוף/בחלוקה</span></div><div class="chip"><b>${done.length}</b><span>נמסרו</span></div>`;
+ $("#list").innerHTML=(act.length?`<h2>בדרך אליי</h2>`+act.map(card).join(""):`<h2>אין משלוחים פעילים</h2>`)+(done.length?`<h2>נמסרו לאחרונה</h2>`+done.map(card).join(""):"");
+ tick();}
+function tick(){if(!DATA)return;const t=DATA.checkedAt;$("#sync").textContent=t?`עודכן לאחרונה: ${ago(t)} · ${full(t)}`:"אין נתונים כרגע";}
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("show"),2200);}
+async function load(manual){const b=$("#rf");b.classList.add("busy");
+ try{const h={};const pw=localStorage.getItem("dl_pw");if(pw)h["x-lock"]=pw;
+  const r=await fetch(API,{headers:h,cache:"no-store"});
+  if(r.status===401){$("#lock").style.display="flex";$("#err").innerHTML="";$("#list").innerHTML="";return;}
+  if(!r.ok)throw new Error(r.status);
+  DATA=await r.json();$("#lock").style.display="none";$("#err").innerHTML="";render();if(manual)toast("הנתונים עודכנו ✓");}
+ catch(e){$("#err").innerHTML=`<div class="err">לא הצלחתי לטעון נתונים עכשיו. ${DATA?"מוצגים הנתונים האחרונים שנטענו.":"אין נתונים כרגע."}</div>`;if(manual)toast("הרענון נכשל");}
+ finally{b.classList.remove("busy");}}
+document.addEventListener("click",e=>{
+ const c=e.target.closest("[data-copy]");if(c){navigator.clipboard?.writeText(c.dataset.copy).then(()=>toast("הועתק ✓"),()=>toast("ההעתקה נכשלה"));e.stopPropagation();return;}
+ if(e.target.closest("a"))return;
+ const h=e.target.closest(".hd");if(h){const cd=h.parentElement,id=cd.dataset.id;cd.classList.toggle("open");h.setAttribute("aria-expanded",cd.classList.contains("open"));
+  cd.classList.contains("open")?open.add(id):open.delete(id);sessionStorage.setItem("open",JSON.stringify([...open]));}});
+$("#rf").onclick=()=>load(true);
+$("#lock").onsubmit=e=>{e.preventDefault();localStorage.setItem("dl_pw",$("#pw").value);load(true);};
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)load()});
+setInterval(()=>load(),60000);setInterval(()=>{render()},60000);setInterval(tick,30000);
+load();
+</script>
+</body>
+</html>
